@@ -9,12 +9,12 @@
 
     <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
       <ion-label position= "floating"><ion-icon name="person-outline"></ion-icon> Nombre</ion-label><br>
-      <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
+      <ion-input type="text" [(ngModel)]="registerData.nombre" name="title" required></ion-input>
     </ion-item>
 
     <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
       <ion-label position= "floating"><ion-icon name="mail-outline"></ion-icon> Email</ion-label><br>
-      <ion-input type="email" [(ngModel)]="todo.title" name="title"></ion-input>
+      <ion-input type="email" [(ngModel)]="registerData.loginData.email" name="title"></ion-input>
     </ion-item>
 
     <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
@@ -28,17 +28,17 @@
 
     <ion-item class="ion-padding-start ion-padding-end" color="">
       <ion-label position= "floating"><ion-icon name="lock-closed-outline"></ion-icon> Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="todo.title" name="title"></ion-input>
+      <ion-input type="password" [(ngModel)]="registerData.loginData.pass" name="title"></ion-input>
     </ion-item>
 
     <ion-item class="ion-padding-start ion-padding-end" color="">
       <ion-label position= "floating"><ion-icon name="lock-closed-outline"></ion-icon> Confirmar Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="todo.title" name="title"></ion-input>
+      <ion-input type="password" name="title"></ion-input>
     </ion-item>
     <br>
 
     <p class="ion-padding-start ion-padding-end" > 
-      <ion-button type="submit" expand="block" color="" (click)="presentToast()">Registrarse</ion-button>
+      <ion-button type="submit" expand="block" color="" (click)="registrarseClick()">Registrarse</ion-button>
     </p>
     <small class="ion-padding-start ion-padding-end"><a href="/login">¿Ya estás registrado?</a></small>
   </div>

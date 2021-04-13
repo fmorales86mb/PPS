@@ -15,13 +15,15 @@ export class NoAuthenticateGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    
+    let isAuth: boolean = false;
 
-    //console.log(this.authService.GetIsAuth());
     if (this.authService.GetIsAuth()) {
+      isAuth = true;
       this.router.navigate(['/']);
     }
 
-    return !this.authService.GetIsAuth();
+    return isAuth;
   }
   
 }

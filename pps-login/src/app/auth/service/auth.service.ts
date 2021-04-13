@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   public async Registrarse(registerData: RegisterData):Promise<boolean>{
-    await this.authDb.createUserWithEmailAndPassword(registerData.email, registerData.pass)
+    await this.authDb.createUserWithEmailAndPassword(registerData.loginData.email, registerData.loginData.pass)
       .then((userCredential) => {
         this.userId = userCredential.user?.uid;
         AuthService.isAuth=true;
@@ -38,9 +38,9 @@ export class AuthService {
     return AuthService.isAuth;
   }
 
-  public Desloguearse(){
-    AuthService.isAuth= false;
-    this.userId = null;
+  public Desloguearse(){    
+    this.authDb.signOut();
+    AuthService.isAuth = false;
   }
 
   public GetUserId(){
@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   public GetIsAuth():boolean{
-    return AuthService.isAuth;
+    return AuthService.isAuth;        
   }
 
   private async Authenticate(loginData: LoginData): Promise<boolean>{    
@@ -56,7 +56,7 @@ export class AuthService {
 
     await this.authDb.signInWithEmailAndPassword(loginData.email, loginData.pass)
     .then((userCredential) => {
-      // Signed in
+      // Signed in      
       this.userId = userCredential.user?.uid;
       isAuth = true;
       //console.log("service: ", userCredential.user);

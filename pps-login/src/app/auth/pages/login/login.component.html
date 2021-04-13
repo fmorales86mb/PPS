@@ -10,10 +10,8 @@
 
     <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
       <ion-label position= "floating"><ion-icon name="person-outline"></ion-icon> Usuarios Precargados</ion-label><br>
-      <ion-select interface="popover">
-        <ion-select-option value="1">Admin</ion-select-option>
-        <ion-select-option value="2">Usuario 1</ion-select-option>
-        <ion-select-option value="3">Usuario 2</ion-select-option>
+      <ion-select interface="popover" [(ngModel)]="loginData">
+        <ion-select-option *ngFor="let user of users" [value]="user.loginData">{{user.rol}}</ion-select-option>
       </ion-select>
     </ion-item>
 
