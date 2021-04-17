@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { LoginMock } from '../../models/login-mock';
 import { LoginData } from '../../models/loginData';
+import { RegisterData } from '../../models/registerData';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
     }    
   }
 
-  async presentToast() {
+  async presentToast(){
     const toast = await this.toastController.create({
       color: 'warning',
       message: 'Error al ingresar datos.',
@@ -56,7 +57,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
 }

@@ -13,18 +13,15 @@ export class AuthenticateGuard implements CanActivate {
 
   }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    let isAuth:boolean = false;
-    console.log(this.authService.GetIsAuth());
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
+  : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    let isAuth:boolean = false;    
     if (this.authService.GetIsAuth()) {
       isAuth = true;
     }
-    else{
+    else{      
+      isAuth = false; // sólo pruebas
       this.router.navigate(['/login']);
-      //isAuth = true; // sólo pruebas
     }
 
     return isAuth;
