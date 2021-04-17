@@ -4,6 +4,7 @@ import { ToastController } from '@ionic/angular';
 import { LoginMock } from '../../models/login-mock';
 import { LoginData } from '../../models/loginData';
 import { RegisterData } from '../../models/registerData';
+import { ResponseFirebase } from '../../models/response-firebase';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -33,19 +34,19 @@ export class LoginComponent implements OnInit {
   }
 
   async clickLogin(){
-    if (await this.authService.Ingresar(this.loginData)){
-      console.log("entra");
+    let response: ResponseFirebase = await this.authService.Ingresar(this.loginData);
+    if (await response.ok){      
       this.router.navigate(['']);
     }
     else{
-      await this.presentToast();
+      await this.presentToast(response.error.description);
     }    
   }
 
-  async presentToast(){
+  async presentToast(message:string){
     const toast = await this.toastController.create({
       color: 'warning',
-      message: 'Error al ingresar datos.',
+      message: message,
       duration: 2000
     });
     toast.present();
