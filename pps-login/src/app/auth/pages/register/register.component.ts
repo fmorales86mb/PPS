@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { RegisterData } from '../../models/registerData';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -9,10 +11,13 @@ import { AuthService } from '../../service/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  registerData: RegisterData;
+
   constructor(
     private authService:AuthService, 
-    public toastController:ToastController) { 
-      
+    public toastController:ToastController,
+    private router:Router) { 
+      this.registerData = new RegisterData();
     }
 
   registrarseClick(){

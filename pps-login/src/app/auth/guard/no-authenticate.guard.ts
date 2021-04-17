@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CurrentUser } from '../models/current-user';
 import { AuthService } from '../service/auth.service';
 
 @Injectable({
@@ -17,11 +18,17 @@ export class NoAuthenticateGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     //console.log(this.authService.GetIsAuth());
-    if (this.authService.GetIsAuth()) {
-      this.router.navigate(['/']);
+    // if (this.authService.GetIsAuth()) {
+    //   this.router.navigate(['/']);
+    // }
+    //return !this.authService.GetIsAuth();
+    let ok = true;
+    if(CurrentUser.isAuth){      
+      ok = false;
+      this.router.navigate(['']);
     }
 
-    return !this.authService.GetIsAuth();
+    return ok;    
   }
   
 }

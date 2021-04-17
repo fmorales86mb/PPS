@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { CurrentUser } from '../models/current-user';
 import { LoginData } from '../models/loginData';
 import { RegisterData } from '../models/registerData';
 
@@ -18,9 +19,13 @@ export class AuthService {
   }
 
   public async Ingresar(loginData: LoginData): Promise<boolean>{  
-    AuthService.isAuth = await this.Authenticate(loginData); 
-    console.log(AuthService.isAuth);        
-    return AuthService.isAuth;
+    //AuthService.isAuth = await this.Authenticate(loginData);     
+    //console.log(AuthService.isAuth);        
+    //return AuthService.isAuth;
+    let ok = await this.Authenticate(loginData);
+    console.log(ok);
+    CurrentUser.isAuth = ok;
+    return CurrentUser.isAuth;
   }
 
   public async Registrarse(registerData: RegisterData):Promise<boolean>{
@@ -48,7 +53,8 @@ export class AuthService {
   }
 
   public GetIsAuth():boolean{
-    return AuthService.isAuth;
+    //return AuthService.isAuth;
+    return CurrentUser.isAuth;
   }
 
   private async Authenticate(loginData: LoginData): Promise<boolean>{    
