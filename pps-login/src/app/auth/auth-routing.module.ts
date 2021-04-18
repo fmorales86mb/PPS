@@ -10,7 +10,7 @@ import { HomeComponent } from '../home/home.component';
 const routes: Routes = [
   {path:'login', component: LoginComponent, canActivate:[NoAuthenticateGuard]},
   {path:'register', component: RegisterComponent, canActivate:[NoAuthenticateGuard]},
-  {path:'', component:HomeComponent, canActivate:[AuthenticateGuard]},
+  //{path:'', component:HomeComponent, canActivate:[AuthenticateGuard]},
 ];
 
 @NgModule({
