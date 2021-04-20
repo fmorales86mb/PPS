@@ -18,13 +18,13 @@ export class SplashComponent implements OnInit {
     const animacion: Animation = this.animationController
       .create()
       .addElement(document.querySelector('.animacion'))
-      .duration(2000)
+      .duration(2000)      
       .fromTo('opacity', '0', '1');
 
     const animacion1: Animation = this.animationController
       .create()
       .addElement(document.querySelector('.animacion'))
-      .duration(2500)
+      .duration(2500)      
       .keyframes([
         { offset: 0, transform: 'rotate(0deg)' },
         { offset: 1, transform: 'rotate(360deg)' },
@@ -36,10 +36,6 @@ export class SplashComponent implements OnInit {
       });
     });
     
-        // animacion1.play().then(() => {
-        //   this.router.navigateByUrl('login');
-        // });
-      
   }
 
 }

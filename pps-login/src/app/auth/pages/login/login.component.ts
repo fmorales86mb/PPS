@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { LoginMock } from '../../models/login-mock';
@@ -15,32 +16,38 @@ import { AuthService } from '../../service/auth.service';
 
 export class LoginComponent implements OnInit {
 
+  private showErrors:boolean;
   private loginData:LoginData;
-  private selectedMock:LoginData;
+  private loginForm:FormGroup;
   private loginsMock:LoginData[]= [
     { email:"admin@admin.com", pass:"111111" },
     { email:"invitado@invitado.com", pass:"222222" },
     { email:"usuario@usuario.com", pass:"333333" },
     { email:"anonimo@anonimo.com", pass:"444444" },
-    { email: "tester@tester.com", pass:"555555" }
+    { email:"tester@tester.com", pass:"555555" }
   ];
 
   constructor(
     public toastController: ToastController,
     private authService: AuthService,
-    private router: Router) { 
+    private router: Router,
+    private formBuilder: FormBuilder) { 
       this.loginData = new LoginData();
-      //this.loginsMock = LoginMock.Mocks;
+      this.createForm();
+      this.showErrors = false;
   }
 
-  async clickLogin(){
-    let response: ResponseFirebase = await this.authService.Ingresar(this.loginData);
-    if (await response.ok){      
-      this.router.navigate(['']);
-    }
-    else{
-      await this.presentToast(response.error.description);
-    }    
+  async clickLogin(){    
+    this.showErrors = true;
+    if(this.loginForm.valid){       
+      // let response: ResponseFirebase = await this.authService.Ingresar(this.loginData);
+      // if (await response.ok){      
+      //   this.router.navigate(['']);
+      // }
+      // else{
+      //   await this.presentToast(response.error.description);
+      // }
+    }        
   }
 
   async presentToast(message:string){
@@ -53,9 +60,20 @@ export class LoginComponent implements OnInit {
   }
 
   onChange(event){
+    //this.loginData = event.target.value;
     //console.log(event.target.value.email);
     //console.log(this.selectedMock);
   }
+
+  createForm() {
+    this.loginForm = this.formBuilder.group({
+      email: ["", [Validators.required, Validators.email]],
+      pass: ["", [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  getEmailControl() { return this.loginForm.controls["email"]; }
+  getPassControl() { return this.loginForm.controls["pass"]; }
 
   ngOnInit() {
   }
