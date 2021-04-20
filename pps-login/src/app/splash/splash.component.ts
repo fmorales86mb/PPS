@@ -20,19 +20,26 @@ export class SplashComponent implements OnInit {
       .addElement(document.querySelector('.animacion'))
       .duration(2000)
       .fromTo('opacity', '0', '1');
+
     const animacion1: Animation = this.animationController
       .create()
       .addElement(document.querySelector('.animacion'))
-      .duration(3000)
+      .duration(2500)
       .keyframes([
         { offset: 0, transform: 'rotate(0deg)' },
         { offset: 1, transform: 'rotate(360deg)' },
       ]);
+      
     animacion.play().then(() => {
       animacion1.play().then(() => {
         this.router.navigateByUrl('login');
       });
     });
+    
+        // animacion1.play().then(() => {
+        //   this.router.navigateByUrl('login');
+        // });
+      
   }
 
 }
