@@ -4,6 +4,7 @@ import { ToastController } from '@ionic/angular';
 import { RegisterData } from '../../models/registerData';
 import { AuthService } from '../../service/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ResponseFirebase } from '../../models/response-firebase';
 
 @Component({
   selector: 'app-register',
@@ -29,19 +30,22 @@ export class RegisterComponent implements OnInit {
 
   async registrarseClick(){
     this.showErrors = true;
-    console.log(this.registerForm.valid);
-    // if(await this.authService.Registrarse(this.registerData)){
-    //   console.log("OK registro");
-    // }
-    // else{
-    //   console.log("error");
-    // }
+    
+    if(this.registerForm.valid){
+      let response: ResponseFirebase = await this.authService.Registrarse(this.registerData);
+      if (await response.ok){      
+        this.router.navigate(['']);
+      }
+      else{
+        await this.presentToast(response.error.description);
+      }
+    }
   }
 
-  async presentToast() {
+  async presentToast(message:string){
     const toast = await this.toastController.create({
       color: 'warning',
-      message: 'Error al ingresar datos.',
+      message: message,
       duration: 2000
     });
     toast.present();

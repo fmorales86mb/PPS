@@ -33,16 +33,15 @@ export class LoginComponent implements OnInit {
   }
 
   async clickLogin(){    
-    console.log(this.loginForm.valid, this.getEmailControl().errors);
     this.showErrors = true;
     if(this.loginForm.valid){       
-      // let response: ResponseFirebase = await this.authService.Ingresar(this.loginData);
-      // if (await response.ok){      
-      //   this.router.navigate(['']);
-      // }
-      // else{
-      //   await this.presentToast(response.error.description);
-      // }
+      let response: ResponseFirebase = await this.authService.Ingresar(this.loginData);
+      if (await response.ok){      
+        this.router.navigate(['']);
+      }
+      else{
+        await this.presentToast(response.error.description);
+      }
     }        
   }
 

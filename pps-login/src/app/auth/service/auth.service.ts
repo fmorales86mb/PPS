@@ -38,19 +38,23 @@ export class AuthService {
     return response;
   }
 
-  public async Registrarse(registerData: RegisterData):Promise<boolean>{
+  public async Registrarse(registerData: RegisterData):Promise<ResponseFirebase>{
+    let response:ResponseFirebase = new ResponseFirebase();
+
     await this.authDb.createUserWithEmailAndPassword(registerData.loginData.email, registerData.loginData.pass)
       .then((userCredential) => {
-        this.userId = userCredential.user?.uid;
-        //AuthService.isAuth=true;
+        CurrentUser.isAuth = true;
+        CurrentUser.user = userCredential.user;
+        response.ok = true;
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode, errorMessage);     
+        CurrentUser.isAuth = false;
+        let errorFirebase = ErrorHandleFirebase.getErrorByCode(error.code);           
+        response.ok = false;
+        response.error = errorFirebase;      
       });
 
-    return false;
+    return response;
   }
 
   public Desloguearse(){    
