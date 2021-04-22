@@ -19,13 +19,7 @@ export class LoginComponent implements OnInit {
   private showErrors:boolean;
   private loginData:LoginData;
   private loginForm:FormGroup;
-  private loginsMock:LoginData[]= [
-    { email:"admin@admin.com", pass:"111111" },
-    { email:"invitado@invitado.com", pass:"222222" },
-    { email:"usuario@usuario.com", pass:"333333" },
-    { email:"anonimo@anonimo.com", pass:"444444" },
-    { email:"tester@tester.com", pass:"555555" }
-  ];
+  private loginsMock:LoginData[];
 
   constructor(
     public toastController: ToastController,
@@ -33,11 +27,13 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder) { 
       this.loginData = new LoginData();
-      this.createForm();
+      this.loginForm = this.createForm();
       this.showErrors = false;
+      this.loginsMock = LoginMock.Mocks;
   }
 
   async clickLogin(){    
+    console.log(this.loginForm.valid, this.getEmailControl().errors);
     this.showErrors = true;
     if(this.loginForm.valid){       
       // let response: ResponseFirebase = await this.authService.Ingresar(this.loginData);
@@ -59,21 +55,20 @@ export class LoginComponent implements OnInit {
     toast.present();
   }
 
-  onChange(event){
-    //this.loginData = event.target.value;
-    //console.log(event.target.value.email);
-    //console.log(this.selectedMock);
-  }
+  onChange(event){  }
 
   createForm() {
-    this.loginForm = this.formBuilder.group({
+    return this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       pass: ["", [Validators.required, Validators.minLength(6)]]
     });
   }
 
   getEmailControl() { return this.loginForm.controls["email"]; }
+
   getPassControl() { return this.loginForm.controls["pass"]; }
+
+  goToRegister() {this.router.navigate(['register']); }
 
   ngOnInit() {
   }

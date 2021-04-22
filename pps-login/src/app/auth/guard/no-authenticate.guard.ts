@@ -10,19 +10,13 @@ import { AuthService } from '../service/auth.service';
 export class NoAuthenticateGuard implements CanActivate {
   
   constructor(private authService: AuthService, private router:Router){
-
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-    //console.log(this.authService.GetIsAuth());
-    // if (this.authService.GetIsAuth()) {
-    //   this.router.navigate(['/']);
-    // }
-    //return !this.authService.GetIsAuth();
     let ok = true;
+    //console.log(CurrentUser.isAuth);
     if(CurrentUser.isAuth){      
       ok = false;
       this.router.navigate(['']);
@@ -30,5 +24,4 @@ export class NoAuthenticateGuard implements CanActivate {
 
     return ok;    
   }
-  
 }
