@@ -1,0 +1,92 @@
+<ion-content fullscreen color="">
+  <div class="form-register">
+    <ion-toolbar color="">
+      <ion-title class="ion-text-center">
+        <h1>Registrar Usuario</h1>
+      </ion-title>
+    </ion-toolbar>
+    <br>
+
+    <form [formGroup]="registerForm" novalidate> 
+      <!-- nombre -->
+    <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
+      <ion-label position= "floating"><ion-icon name="person-outline"></ion-icon> Nombre</ion-label><br>
+      <ion-input 
+        type="text" 
+        formControlName="name" 
+        [(ngModel)]="registerData.nombre" 
+        >
+      </ion-input>
+    </ion-item>
+    <div class="error-input-message" *ngIf="getNameControl().invalid && showErrors">
+      <small class="ion-padding-start ion-padding-end" *ngIf="getNameControl().errors.required">Campo obligatorio</small>
+      <small class="ion-padding-start ion-padding-end" *ngIf="getNameControl().errors.minlength">Mínimo 2 caracteres</small>
+    </div>
+
+    <!-- email -->
+    <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
+      <ion-label position= "floating"><ion-icon name="mail-outline"></ion-icon> Email</ion-label><br>
+      <ion-input 
+        type="email" 
+        formControlName="email" 
+        [(ngModel)]="registerData.loginData.email" 
+        >
+      </ion-input>
+    </ion-item>
+    <div class="error-input-message" *ngIf="getEmailControl().invalid && showErrors">
+      <small class="ion-padding-start ion-padding-end" *ngIf="getEmailControl().errors.required">Campo obligatorio</small>
+      <small class="ion-padding-start ion-padding-end" *ngIf="getEmailControl().errors.email">Formato incorrecto</small>
+    </div>
+
+    <!-- genero -->
+    <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
+      <ion-label position= "floating"><ion-icon name="male-female-outline"></ion-icon> Género</ion-label><br>
+      <ion-select 
+        interface="popover" 
+        formControlName="genero" 
+        [(ngModel)]="registerData.genero">
+        <ion-select-option value="1">Femenino</ion-select-option>
+        <ion-select-option value="2">Masculino</ion-select-option>
+        <ion-select-option value="3">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="error-input-message" *ngIf="getGeneroControl().invalid && showErrors">
+      <small class="ion-padding-start ion-padding-end" *ngIf="getGeneroControl().errors.required">Campo obligatorio</small>
+    </div>
+
+    <!-- pass 01 -->
+    <ion-item class="ion-padding-start ion-padding-end" color="">
+      <ion-label position= "floating"><ion-icon name="lock-closed-outline"></ion-icon> Contraseña</ion-label>
+      <ion-input 
+        type="password" 
+        formControlName="pass1"
+        [(ngModel)]="registerData.loginData.pass" >
+      </ion-input>
+    </ion-item>
+    <div class="error-input-message" *ngIf="getPass1Control().invalid && showErrors">
+      <small class="ion-padding-start ion-padding-end" *ngIf="getPass1Control().errors.required">Campo obligatorio</small>
+      <small class="ion-padding-start ion-padding-end" *ngIf="getPass1Control().errors.minlength">Mínimo 6 caracteres</small>
+    </div>
+
+    <!-- pass 02 -->
+    <ion-item class="ion-padding-start ion-padding-end" color="">
+      <ion-label position= "floating"><ion-icon name="lock-closed-outline"></ion-icon> Confirmar Contraseña</ion-label>
+      <ion-input 
+        type="password"
+        formControlName="pass2"
+        [(ngModel)]="passConfirmation">
+      </ion-input>
+    </ion-item>
+    <div class="error-input-message" *ngIf="getPass2Control().invalid && showErrors">
+      <small class="ion-padding-start ion-padding-end" *ngIf="getPass2Control().errors.required">Campo obligatorio</small>
+      <small class="ion-padding-start ion-padding-end" *ngIf="getPass2Control().errors.minlength">Mínimo 6 caracteres</small>
+    </div>
+    <br>
+    </form>
+    
+    <p class="ion-padding-start ion-padding-end" > 
+      <ion-button type="submit" expand="block" color="" (click)="registrarseClick()">Registrarse</ion-button>
+    </p>
+    <small class="ion-padding-start ion-padding-end"><a  [routerLink]="" (click)="goToLogin()">¿Ya estás registrado?</a></small>
+  </div>
+</ion-content>

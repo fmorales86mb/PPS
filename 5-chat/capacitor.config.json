@@ -1,0 +1,11 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "4-carga-credito",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    
+  },
+  "cordova": {}
+}

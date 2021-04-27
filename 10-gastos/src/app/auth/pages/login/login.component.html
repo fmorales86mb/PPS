@@ -1,0 +1,61 @@
+<ion-content fullscreen color="">
+  <div class="form-login">
+    
+
+      <ion-toolbar color="">
+        <ion-title class="ion-text-center">
+          <h1>Bienvenid@</h1>
+        </ion-title>
+      </ion-toolbar>
+      <br>
+
+        <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
+          <ion-label position= "floating"><ion-icon name="person-outline"></ion-icon> Usuarios Precargados</ion-label>
+          <br>
+          <ion-select interface="popover" [(ngModel)]="loginData" (ionChange)="onChange($event)"> 
+            <ion-select-option *ngFor="let login of loginsMock" [value]="login">{{login.email}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      <form [formGroup]="loginForm" novalidate>    
+        <!-- email -->
+        <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
+          <ion-label position= "floating"><ion-icon name="mail-outline"></ion-icon> Email</ion-label><br>
+          <ion-input 
+            type="text" 
+            formControlName="email" 
+            [(ngModel)]="loginData.email" 
+            >
+          </ion-input>          
+        </ion-item>
+        <!-- errores -->
+        <div class="error-input-message" *ngIf="getEmailControl().invalid && showErrors">
+          <small class="ion-padding-start ion-padding-end" *ngIf="getEmailControl().errors.required">Campo obligatorio</small>
+          <small class="ion-padding-start ion-padding-end" *ngIf="getEmailControl().errors.email">Formato incorrecto</small>
+        </div>
+        <!-- pass -->
+        <ion-item class="ion-padding-start ion-padding-end" color="">
+          <ion-label position= "floating"><ion-icon  name="lock-closed-outline"></ion-icon> Contraseña</ion-label>
+          <ion-input 
+            type="password" 
+            formControlName="pass" 
+            [(ngModel)]="loginData.pass" 
+            >
+          </ion-input>
+        </ion-item> 
+        <!-- errores -->
+        <div class="error-input-message" *ngIf="getPassControl().invalid && showErrors">
+          <small class="ion-padding-start ion-padding-end" *ngIf="getPassControl().errors.required">Campo obligatorio</small>
+          <small class="ion-padding-start ion-padding-end" *ngIf="getPassControl().errors.minlength">Mínimo 6 caracteres</small>          
+        </div>        
+      </form>
+        <br>
+
+      <p class="ion-padding-start ion-padding-end" > 
+        <ion-button type="ion-button" expand="block" color="" (click)="clickLogin()" >Ingresar</ion-button>
+      </p>
+      <small class="ion-padding-start ion-padding-end"><a [routerLink]="" (click)="goToRegister()">¿Todavía no te registraste?</a></small>
+    
+  </div>
+
+</ion-content>
