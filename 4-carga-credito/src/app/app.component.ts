@@ -19,10 +19,11 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.router.navigateByUrl('splash');
       setTimeout(() => {
-        SplashScreen.hide();
-        this.router.navigateByUrl('splash');
-      }, 200);
+        //SplashScreen.hide();
+        
+      }, 0);
     });
   }
 }

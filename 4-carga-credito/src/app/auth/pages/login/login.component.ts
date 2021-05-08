@@ -32,16 +32,18 @@ export class LoginComponent implements OnInit {
       this.loginsMock = LoginMock.Mocks;
   }
 
-  async clickLogin(){    
+  clickLogin(){    
     this.showErrors = true;
     if(this.loginForm.valid){       
-      let response: ResponseFirebase = await this.authService.Ingresar(this.loginData);
-      if (await response.ok){      
-        this.router.navigate(['']);
-      }
-      else{
-        await this.presentToast(response.error.description);
-      }
+      this.authService.Ingresar(this.loginData)
+      .then((value)=>{
+        if (value.ok){      
+          this.router.navigate(['']);
+        }
+        else{
+          this.presentToast(value.error.description);
+       }
+      });            
     }        
   }
 

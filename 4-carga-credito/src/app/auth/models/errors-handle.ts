@@ -16,7 +16,7 @@ export class ErrorHandleFirebase{
         {code:"auth/invalid-disabled-field",description:"El valor que se proporcionó para la propiedad del usuario disabled no es válido. Debe ser un booleano."},
         {code:"auth/invalid-display-name"    ,description:"El valor que se proporcionó para la propiedad del usuario displayName no es válido. Debe ser una string que no esté vacía."},
         {code:"auth/invalid-dynamic-link-domain"    ,description:"El dominio del vínculo dinámico proporcionado no se configuró o no se autorizó para el proyecto actual."},
-        {code:"auth/invalid-email",description:"El valor que se proporcionó para la propiedad del usuario email no es válido. Debe ser una dirección de correo electrónico de string."},
+        {code:"auth/invalid-email",description:"La dirección de correo electrónico está mal formateada."},
         {code:"auth/invalid-email-verified",description:"El valor que se proporcionó para la propiedad del usuario emailVerified no es válido. Debe ser un booleano."},
         {code:"auth/invalid-hash-algorithm",description:"El algoritmo de hash debe coincidir con las strings de la lista de algoritmos compatibles."},
         {code:"auth/invalid-hash-block-size"    ,description:"El tamaño del conjunto de hash debe ser un número válido."},
@@ -53,7 +53,10 @@ export class ErrorHandleFirebase{
         {code:"auth/session-cookie-revoked",description:"Se revocaron las cookies de la sesión de Firebase."},
         {code:"auth/uid-already-exists",description:"Otro usuario ya utiliza el uid proporcionado. Cada usuario debe tener un uid único."},
         {code:"auth/unauthorized-continue-uri",description:"El dominio de la URL de continuación no está en la lista blanca. Inclúyelo en la lista en Firebase console."},
-        {code:"auth/user-not-found",description:"No existe ningún registro de usuario que corresponda al identificador proporcionado."},
+        {code:"auth/user-not-found",description:"No existe ningún usuario que corresponda al correo electrónico proporcionado."},
+        {code:"auth/wrong-password",description:"Clave incorrecta."},
+        {code:"auth/too-many-requests", description:"El acceso a esta cuenta se ha desactivado temporalmente debido a muchos intentos fallidos de inicio de sesión. Puede restaurarlo inmediatamente restableciendo su contraseña o puede intentarlo de nuevo más tarde."},
+        {code:"auth/email-already-in-use", description: "La dirección de correo electrónico ya está siendo utilizada por otra cuenta. "},
         {code:"error-generico",description:"Ocurrió un error inesperado. Intentelo nuevamente más tarde."}
     ];
 
@@ -61,7 +64,7 @@ export class ErrorHandleFirebase{
         let error: ErrorFirebase = ErrorHandleFirebase.errors.find(x => x.code == code);
         
         if(!error){
-            error = ErrorHandleFirebase.errors.find(x => x.code = "error-generico");
+            error = ErrorHandleFirebase.errors.find(x => x.code == "error-generico");
         }
         
         return error;
