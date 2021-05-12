@@ -20,7 +20,7 @@ export class AuthService {
   constructor(private authDb: AngularFireAuth, 
     private router:Router, 
     private userService:UserService) { 
-      this.currentUser = new User();
+  
     }
 
   public async Registrarse(registerData: RegisterData):Promise<ResponseFirebase>{
@@ -58,17 +58,26 @@ export class AuthService {
     await this.authDb.signInWithEmailAndPassword(loginData.email, loginData.pass)
     .then((userCredential) => {                 
       this.isAuth = true;
-      response.ok = true;
-      this.userService.getUserByEmail(loginData.email).then(
-        (user) => this.currentUser = user);
+      response.ok = true;      
     })
     .catch((error) => {
       this.isAuth = false;
       let errorFirebase = ErrorHandleFirebase.getErrorByCode(error.code);           
       response.ok = false;
       response.error = errorFirebase;          
+    })
+    .finally(()=>{
+
     });
-            
+          
+    if(response.ok){
+      this.userService.getUserByEmail(loginData.email).then((qs) =>{
+        if(qs.size === 1){
+          this.currentUser = qs.docs[0].data();
+        }
+      });
+    } 
+    
     return response;
   }
 
@@ -80,5 +89,9 @@ export class AuthService {
 
   public GetIsAuth():boolean{    
     return this.isAuth;
+  }
+
+  public GetCurrentUser():User{
+    return this.currentUser;
   }
 }

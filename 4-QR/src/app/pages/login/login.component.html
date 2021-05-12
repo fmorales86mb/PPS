@@ -7,8 +7,7 @@
           <h1>Bienvenid@</h1>
         </ion-title>
       </ion-toolbar>
-      <br>
-      <br>
+      <br>      
       <br>
         <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">
           <ion-label position= "floating"><ion-icon name="person-outline"></ion-icon> Usuarios Precargados</ion-label>
@@ -17,8 +16,7 @@
             <ion-select-option *ngFor="let login of loginsMock" [value]="login">{{login.email}}</ion-select-option>
           </ion-select>
         </ion-item>
-        <br>
-        <br>
+        <br>        
       <form [formGroup]="loginForm" novalidate (ngSubmit)="clickLogin()">    
         
         <ion-item color="" class="ion-padding-start ion-padding-end" fill="outline">

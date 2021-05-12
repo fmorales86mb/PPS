@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private loadingController: LoadingController) { 
-      this.loginData = new LoginData();
-      this.loginsMock = LoginMock.Mocks;
   }
 
   ngOnInit() {
+    this.loginData = new LoginData();
+    this.loginsMock = LoginMock.Mocks;
     this.loginForm = this.createForm();
   }
 
@@ -46,8 +46,9 @@ export class LoginComponent implements OnInit {
 
   ingresar(){
     this.authService.Ingresar(this.loginData).then((value)=>{
-      if (value.ok){      
+      if (value.ok){     
         this.router.navigate(['']);
+        this.ngOnInit();        
       }
       else{
         this.presentToast(value.error.description);
@@ -81,6 +82,9 @@ export class LoginComponent implements OnInit {
 
   getPassControl() { return this.loginForm.controls["pass"]; }
 
-  goToRegister() {this.router.navigate(['register']); }
+  goToRegister() {
+    this.router.navigate(['register']); 
+    this.ngOnInit();
+  }
 
 }

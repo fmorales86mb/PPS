@@ -24,11 +24,11 @@ export class RegisterComponent implements OnInit {
     public toastController:ToastController,
     private router:Router,
     private formBuilder: FormBuilder,
-    private loadingController: LoadingController) { 
-      this.registerData = new RegisterData();            
+    private loadingController: LoadingController) {                 
   }
 
   ngOnInit() {
+    this.registerData = new RegisterData();  
     this.createForm();
   }
 
@@ -52,6 +52,7 @@ export class RegisterComponent implements OnInit {
     this.authService.Registrarse(this.registerData).then((value)=>{
       if (value.ok){      
         this.router.navigate(['']);
+        this.ngOnInit();
       }
       else{
         this.presentToast(value.error.description);
@@ -87,6 +88,9 @@ export class RegisterComponent implements OnInit {
   getGeneroControl() { return this.registerForm.controls["genero"]; }
   getPass2Control() { return this.registerForm.controls["pass2"]; }
 
-  goToLogin(){ this.router.navigate(['login']) }
+  goToLogin(){ 
+    this.router.navigate(['login']);
+    this.ngOnInit();
+   }
 
 }
