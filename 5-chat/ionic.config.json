@@ -1,7 +1,5 @@
 {
-  "name": "4-carga-credito",
-  "integrations": {
-    "capacitor": {}
-  },
+  "name": "5-Chat",
+  "integrations": {},
   "type": "angular"
 }
