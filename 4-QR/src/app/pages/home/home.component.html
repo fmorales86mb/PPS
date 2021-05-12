@@ -1,0 +1,37 @@
+<ion-content fullscreen color="">
+
+  <ion-toolbar color="">
+    <ion-title class="">
+      
+      <h1 class="ion-text-center">
+        Carga de Crédito
+        <a class="btn-logout" (click)="clickLogout()"><ion-icon name="power-outline"></ion-icon></a>
+      </h1>
+    </ion-title>
+  </ion-toolbar>
+
+  <ionGrid>
+    <ionRow>
+      <ionCol color="medium" class="ion-padding-start ion-padding-end ion-padding-top">
+        <ion-button class="btn-limpiar" expand="block" (click)="clickLimpiar()">Limpiar crédito</ion-button>        
+      </ionCol>
+    </ionRow>
+
+    <ionRow>
+      <ionCol>
+        <ion-item color="dark" class="credito ion-padding-start ion-padding-end ion-padding-bootom">              
+            <h1 class="ion-text-center">$ {{credito}}</h1>
+        </ion-item>                  
+      </ionCol>
+    </ionRow>
+
+    <ionRow>
+      <ionCol >
+        <p class="ion-padding-start ion-padding-end" > 
+          <ion-button class="col-btn" type="ion-button" expand="block" color="success" (click)="clickCargar()" >Cargar</ion-button>
+        </p>          
+      </ionCol>
+    </ionRow>
+
+  </ionGrid>        
+</ion-content>
