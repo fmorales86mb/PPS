@@ -24,3 +24,27 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.h-70{
+    height: 70%;
+}
+
+button{
+    border-radius: 1rem !important;
+}
+
+body button{
+    font-family: cursive !important;
+}
+
+.bg-sala-a{
+    background-color: #8e72b0;
+}
+
+.bg-sala-b{
+    background-color: #94c7db;
+}
+
+.invalid {
+        color: red;
+}
