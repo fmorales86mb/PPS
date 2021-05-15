@@ -1,0 +1,56 @@
+.form-register{
+    margin-top: 0rem;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+    margin-left: 1rem;
+    margin-right: 1rem;  
+}
+
+.form-register .btn-register{
+    height: 6rem;
+    margin-bottom: 0rem;    
+}
+
+.form-register input{
+    border-radius: 0%;   
+}
+
+.form-register .btn-login{
+    height: 4rem;
+}
+
+.form-register ion-item{
+    margin-bottom: 1rem;
+}
+
+.form-register label{
+    color: black;
+}
+
+.error-input-message{
+    color:#eb445a;    
+    margin-bottom: 0%; 
+}
+
+.form-register button{
+    margin-bottom: 0rem;
+    border-radius: 0rem !important;
+    width: 100%;    
+}
+
+.btn-register{
+    height: 5rem;    
+    margin-top: 0rem;
+    font-size:x-large;
+    background-color: thistle;
+}
+
+.btn-login{
+    height: 10rem;  
+    margin-bottom: 0rem;  
+    font-size:xx-large;
+    background-color: slateblue;
+}
+
+select{
+    color: black;
+}
