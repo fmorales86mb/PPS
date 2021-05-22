@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   ingresar(){
     this.authService.Ingresar(this.loginData).then((value)=>{
       if (value.ok){     
-        this.router.navigate(['']);
+        this.router.navigate(['home']);
         this.ngOnInit();        
       }
       else{

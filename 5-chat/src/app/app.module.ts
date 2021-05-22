@@ -16,6 +16,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ChatService } from './services/chat.service';
 import { ChatComponent } from './pages/chat/chat.component';
+import { SplashComponent } from './pages/splash/splash.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ChatComponent } from './pages/chat/chat.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ChatComponent
+    ChatComponent,
+    SplashComponent
   ],
   entryComponents: [],
   imports: [

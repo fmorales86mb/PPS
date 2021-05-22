@@ -6,3 +6,19 @@ crear proyecto en firebase:
 	copiar datos en los enviroments
 	habilitar autenticación
 	crear base de datos
+
+--------------
+splash icon
+ 
+ crear carpeta resources en la raiz del proyecto
+ agragar icon y splash
+ 
+ npm install -g capacitor-resources
+ capacitor-resources (este comando se ejecuta sobre el android, no hace falta más nada)
+
+
+ionic build
+npx cap add android
+	npx cap sync (si ya tengo el android creado)
+capacitor-resources (si se cambió algo)
+npx cap open android

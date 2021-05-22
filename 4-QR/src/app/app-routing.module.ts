@@ -4,12 +4,14 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { SplashComponent } from './pages/splash/splash.component';
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
+  {path:"splash", component:SplashComponent},
   {path:"home", component:HomeComponent, canActivate:[AuthGuard]},
-  {path:"", redirectTo:"home", pathMatch:"full"}
+  {path:"", redirectTo:"splash", pathMatch:"full"}
 ];
 
 @NgModule({

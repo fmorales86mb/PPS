@@ -15,13 +15,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { SplashComponent } from './pages/splash/splash.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    SplashComponent
   ],
   entryComponents: [],
   imports: [

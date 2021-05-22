@@ -1,0 +1,8 @@
+{
+  "name": "2-didactica",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

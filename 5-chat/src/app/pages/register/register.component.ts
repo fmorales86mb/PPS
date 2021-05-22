@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
   registrarse(){
     this.authService.Registrarse(this.registerData).then((value)=>{
       if (value.ok){      
-        this.router.navigate(['']);
+        this.router.navigate(['home']);
         this.ngOnInit();
       }
       else{
