@@ -1,6 +1,6 @@
 .form-login{
     margin-top: 0rem;
-    font-family: Georgia, 'Times New Roman', Times, serif !important;
+    font-family: helvetica;
     margin-left: 1rem;
     margin-right: 1rem;  
 }
@@ -9,9 +9,28 @@
     margin-bottom: 1rem;
 }
 
+.btn-register{
+    height: 5rem;    
+    margin-top: 1rem;
+    font-size:x-large;
+    //background-color: thistle;
+}
+
+.btn-login{
+    height: 10rem;  
+    margin-bottom: 0rem;  
+    font-size:xx-large;
+    //background-color: slateblue;
+}
+.form-login label{
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
 .form-login input{
-    margin-top: 2rem;
-    border-radius: 0rem;
+    //margin-top: 2rem;
+    border-radius: 1rem;
+    font-family: helvetica;
 }
 
 .form-login label{
@@ -28,25 +47,15 @@
     width: 100%;    
 }
 
-.btn-register{
-    height: 5rem;    
-    margin-top: 0rem;
-    font-size:x-large;
-    background-color: thistle;
-}
 
-.btn-login{
-    height: 10rem;  
-    margin-bottom: 0rem;  
-    font-size:xx-large;
-    background-color: slateblue;
-}
+
+
 
 .btn-user{
     height: 1.8rem;    
-    width: 40% !important;
-    margin: 1rem;
+    width: 45% !important;
+    margin: 0.5rem;
     font-size:small;
-    background-color: salmon;
+    //background-color: salmon;
 }
 
