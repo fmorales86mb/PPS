@@ -10,7 +10,7 @@ import { SplashComponent } from './pages/splash/splash.component';
 const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
-  {path:"home", component:HomeComponent, canActivate:[AuthGuard]}, 
+  {path:"home", component:HomeComponent, canActivate:[]}, 
   {path:"list", component:ListadoComponent, canActivate:[AuthGuard]},  
   {path:"splash", component:SplashComponent}, 
   {path:"", redirectTo:"splash", pathMatch:"full"}

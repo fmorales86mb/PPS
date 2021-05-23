@@ -1,21 +1,20 @@
-.h-40{
-    height: 40%;
+.btn-espania{
+    background-image:url(../../../assets/bandera-gallegos.png);
+    background-repeat:no-repeat;
+    background-position:center; 
+    height:100px;
+    width:100px;
 }
 
-button{
-    font-size:10vh;
+.btn-sel{
+    height: 3rem;
+    width: 100%;
 }
 
-svg{
-    margin-bottom: 1rem;
+.div-temas img{
+    border-radius: 1rem;
 }
 
-
-
-.bg-sala-a{
-    background-image: url("../../../assets/pulgar-arriba.jpg") !important;
-}
-
-.bg-sala-b{
-    background-image: url("../../../assets/pulgar-abajo.jpg") !important;
+.div-opciones button{
+    border-radius: 1rem;
 }
