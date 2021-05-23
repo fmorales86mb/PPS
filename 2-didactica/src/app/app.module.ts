@@ -18,6 +18,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ListadoComponent } from './pages/listado/listado.component';
 import { SplashComponent } from './pages/splash/splash.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,9 @@ import { SplashComponent } from './pages/splash/splash.component';
     AngularFirestoreModule,
     AngularFireStorageModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

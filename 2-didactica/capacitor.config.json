@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "2-didactica",
+  "appId": "io.ionic.didactica",
+  "appName": "Tabla Didáctica",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

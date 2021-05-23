@@ -1,31 +1,75 @@
 <ion-content fullscreen color="dark">
+  
+  <ion-toolbar color="">
+    <ion-title class="ion-text-end">
+      <ion-icon name="exit" (click)="clickLogout()"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
 <div class="container">
-  <div class="mt-3 div-temas">
-    <div class="mb-2" style="display: flex;">
-      <div class="col">
-        <img [src]="espania" height="70px" width="100%">
+  <ion-toolbar>
+    <div class="my-2 px-2 div-temas">
+      
+      <!-- Idiomas -->
+      <div class="mb-2" style="display: flex;">
+        <div class="col">
+          <button class="btn"><img [src]="espania" height="70px" width="100%" (click)="setIdioma(1)"></button>          
+        </div>
+        <div class="col">
+          <button class="btn">
+            <img [src]="pirata" height="70px" width="100%" (click)="setIdioma(2)">
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn">
+            <img [src]="portugal" height="70px" width="100%" (click)="setIdioma(3)">
+          </button>
+        </div>
       </div>
-      <div class="col">
-        <img [src]="pirata" height="70px" width="100%">
-      </div>
-      <div class="col">
-        <img [src]="portugal" height="70px" width="100%">
+
+      <!-- Temas -->
+      <div class="mb-1" style="display: flex;">
+        <div class="col">
+          <img [src]="animales" height="70px" width="100%" (click)="setTema(1)">
+        </div>
+        <div class="col mr-0">
+          <img [src]="colores" height="70px" width="100%" (click)="setTema(2)">
+        </div>
+        <div class="col">
+          <img [src]="numeros" height="70px" width="100%" (click)="setTema(3)">
+        </div>
       </div>
     </div>
-    <div class="mb-1" style="display: flex;">
-      <div class="col">
-        <img [src]="animales" height="70px" width="100%">
+  </ion-toolbar>
+
+  <div class="my-2" [ngSwitch]="temaSeleccionado">
+    <!-- Animales -->
+    <div *ngSwitchCase="1">
+      <div class="row" style="display: flex;">
+        <div class="col-6" *ngFor="let item of listadoAnimales">
+          <img [src]="item.src" class="img-option" (click)="playSound(item)">
+        </div>
       </div>
-      <div class="col mr-0">
-        <img [src]="colores" height="70px" width="100%">
+    </div>
+
+    <!-- Colores -->
+    <div *ngSwitchCase="2">
+      <div class="row" style="display: flex;">
+        <div class="col-6" *ngFor="let item of listadoColores" >
+          <div class="img-option" [style.background-color]=item.src (click)="playSound(item)">
+          </div>
+        </div>
       </div>
-      <div class="col">
-        <img [src]="numeros" height="70px" width="100%">
+    </div>
+
+    <!-- Números -->
+    <div *ngSwitchCase="3">
+      <div class="row" style="display: flex;">
+        <div class="col-6" *ngFor="let item of listadoNumeros">
+          <img [src]="item.src" class="img-option" (click)="playSound(item)">
+        </div>
       </div>
     </div>
   </div>
-
-  
 
 </div>
 </ion-content>
