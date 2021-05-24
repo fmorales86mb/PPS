@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "4-QR",
+  "appId": "io.ionic.qr",
+  "appName": "Carga de Crédito",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

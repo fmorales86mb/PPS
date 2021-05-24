@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "5-Chat",
+  "appId": "io.ionic.chat",
+  "appName": "Conversando en el Aula",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

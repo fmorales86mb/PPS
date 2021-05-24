@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "1-edificio",
+  "appId": "io.ionic.relevamiento",
+  "appName": "Relevamiento Visual",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
