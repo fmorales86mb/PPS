@@ -8,6 +8,10 @@ crear proyecto en firebase:
 	habilitar autenticación
 	crear base de datos
 
+-------------
+para plugins de cordova se necesita instlalar el core
+	npm install @ionic-native/core
+
 --------------
 splash icon
  

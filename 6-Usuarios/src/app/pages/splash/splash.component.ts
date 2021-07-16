@@ -23,8 +23,8 @@ export class SplashComponent implements OnInit {
     const name1: Animation = this.animationController
       .create()
       .addElement(document.querySelector('.name'))
-      .duration(1700)
-      .fromTo('transform', 'translateY(0px)', 'translateY(400px)')
+      .duration(2000)
+      .fromTo('opacity', '1', '0'); 
 
     const curso: Animation = this.animationController
       .create()
@@ -35,8 +35,8 @@ export class SplashComponent implements OnInit {
     const curso1: Animation = this.animationController
       .create()
       .addElement(document.querySelector('.curso'))
-      .duration(1700)
-      .fromTo('transform', 'translateY(0px)', 'translateY(-350px)')
+      .duration(2000)
+      .fromTo('opacity', '1', '0'); 
 
     const animacion: Animation = this.animationController
     .create()
@@ -46,12 +46,9 @@ export class SplashComponent implements OnInit {
   
     const animacion1: Animation = this.animationController
       .create()
-      .addElement(document.querySelector('.animacion'))
+      .addElement(document.querySelector('.animacion1'))
       .duration(2000)
-      .keyframes([
-        { offset: 0, transform: 'rotate(0deg)' },
-        { offset: 1, transform: 'rotate(360deg)' },
-      ]);
+      .fromTo('opacity', '1', '0');
     
     name.play().then(()=>{
       name1.play();

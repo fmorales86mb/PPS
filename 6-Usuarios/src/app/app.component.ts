@@ -22,7 +22,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       setTimeout(() => {
         SplashScreen.hide();
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('splash');
       }, 0);
     });
   }

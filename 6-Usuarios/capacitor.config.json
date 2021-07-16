@@ -1,6 +1,6 @@
 {
 	"appId": "io.ionic.starter",
-	"appName": "6-Usuarios",
+	"appName": "Administración de Usuarios",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { SpinnerService } from 'src/app/services/spinner.service';
-import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -31,7 +30,7 @@ export class HomeComponent implements OnInit {
 
     this.userService.items.subscribe((items)=>{
       this.users = items;
-      console.log(this.users);
+      //console.log(this.users);
       this.spinner.hide();
     });
   }
