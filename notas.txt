@@ -1,6 +1,7 @@
 Crear app: ionic start name blank --capacitor
 
 instalar firebase: ng add @angular/fire
+npm install @angular/fire firebase --save (así funcionó con ionic)
 
 crear proyecto en firebase:
 	copiar datos en los enviroments

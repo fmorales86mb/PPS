@@ -1,0 +1,32 @@
+<ion-content fullscreen color="tertiary">
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="logout()" color="warning">
+      <ion-icon name="exit-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="currentUser.rol == 1">
+    <ion-fab-button (click)="goToRegister()" color="success">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div class="container">
+    <h1 class="text-primary text-center">Lista de Usuarios</h1>
+  </div>
+  
+
+  <div class="container mt-4">
+      <ion-item color="primary" class="user-item" *ngFor="let usuario of users">
+        <ion-avatar slot="start">
+          <img [src]="usuario.img_src">
+        </ion-avatar>
+        <ion-label>
+          <h1>{{usuario.nombre}} {{usuario.apellido}}</h1>
+          <p class="text-muted">{{usuario.email}}</p>
+        </ion-label>
+      </ion-item>
+  </div>
+
+</ion-content>
