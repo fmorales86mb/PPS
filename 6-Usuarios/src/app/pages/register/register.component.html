@@ -108,6 +108,10 @@
     <div class="div-error">
       <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getPass2Control().errors?.required  && getPass2Control().touched">Campo obligatorio</small>
       <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getPass2Control().errors?.minlength  && getPass2Control().touched">Mínimo 6 caracteres</small>
+      <small class="error-input-message ion-padding-start ion-padding-end" 
+        *ngIf="!getPass2Control().errors?.minlength && getPass2Control().touched && getPass2Control().errors?.mustMatch">
+        Las contraseñas deben ser las mismas
+      </small>
     </div>
 
       <button type="submit" expand="block" color="" class="btn-register btn btn-success" [disabled]="registerForm.invalid">Registrar Usuario</button>
