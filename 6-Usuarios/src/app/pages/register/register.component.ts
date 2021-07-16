@@ -43,6 +43,7 @@ export class RegisterComponent implements OnInit {
   createForm() {
     this.registerForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
+      rol: [""],
       pass1: ["", [Validators.required, Validators.minLength(6)]],
       name: ["", [Validators.required, Validators.minLength(2)]],
       lastName: ["", [Validators.required, Validators.minLength(2)]],
@@ -128,6 +129,7 @@ export class RegisterComponent implements OnInit {
   getLastNameControl() { return this.registerForm.controls["lastName"]; }
   getDniControl() { return this.registerForm.controls["dni"]; }
   getPass2Control() { return this.registerForm.controls["pass2"]; }
+  getRolControl() { return this.registerForm.controls["rol"]; }
 
   goToHome(){ 
     this.router.navigate(['home']);

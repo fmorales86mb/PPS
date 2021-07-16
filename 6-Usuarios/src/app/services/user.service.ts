@@ -10,7 +10,7 @@ export class UserService extends BaseService<User>{
 
   constructor(private fire:AngularFirestore) { 
     super(fire);
-    this.setCollection("users");
+    this.setCollectionOrderBy("users", "nombre");
   }
 
   async getUserByEmail(email:string){

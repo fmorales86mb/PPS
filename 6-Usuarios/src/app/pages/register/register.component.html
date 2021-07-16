@@ -23,28 +23,42 @@
         </ion-fab-button>
       </ion-avatar>
 
-      <!-- nombre -->
-    <div class="form-floating">
-      <input type="text" class="form-control " id="floatingInput" placeholder="Luis Emilio" 
-      formControlName="name" 
-      [(ngModel)]="registerData.usuario.nombre">
-      <label for="floatingInput">Nombre</label>
-    </div>
-    <div class="div-error" >
-      <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getNameControl().errors?.required && getNameControl().touched">Campo obligatorio</small>
-      <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getNameControl().errors?.minlength && getNameControl().touched">Mínimo 2 caracteres</small>
-    </div>
+      <!-- Rol -->
+      <select class="form-select" aria-label="Rol" formControlName="rol" [(ngModel)]="registerData.usuario.rol">
+        <option value="3">Usuario</option>
+        <option value="1">Administrador</option>
+      </select>
+      <div class="div-error" >
+        </div>
 
-    <!-- apellido -->
-    <div class="form-floating">
-      <input type="text" class="form-control " id="floatingInput" placeholder="Recabarren" 
-      formControlName="lastName" 
-      [(ngModel)]="registerData.usuario.apellido">
-      <label for="floatingInput">Apellido</label>
-    </div>
-    <div class="div-error">
-      <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getLastNameControl().errors?.required && getLastNameControl().touched">Campo obligatorio</small>
-      <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getLastNameControl().errors?.minlength && getLastNameControl().touched">Mínimo 2 caracteres</small>
+    <div class="row">
+      <div class="col">
+        <!-- nombre -->
+        <div class="form-floating">
+          <input type="text" class="form-control " id="floatingInput" placeholder="Luis Emilio" 
+          formControlName="name" 
+          [(ngModel)]="registerData.usuario.nombre">
+          <label for="floatingInput">Nombre</label>
+        </div>
+        <div class="div-error" >
+          <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getNameControl().errors?.required && getNameControl().touched">Campo obligatorio</small>
+          <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getNameControl().errors?.minlength && getNameControl().touched">Mínimo 2 caracteres</small>
+        </div>
+      </div>
+      
+      <div class="col">
+        <!-- apellido -->
+        <div class="form-floating col">
+          <input type="text" class="form-control " id="floatingInput" placeholder="Recabarren" 
+          formControlName="lastName" 
+          [(ngModel)]="registerData.usuario.apellido">
+          <label for="floatingInput">Apellido</label>
+        </div>
+        <div class="div-error">
+          <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getLastNameControl().errors?.required && getLastNameControl().touched">Campo obligatorio</small>
+          <small class="error-input-message ion-padding-start ion-padding-end" *ngIf="getLastNameControl().errors?.minlength && getLastNameControl().touched">Mínimo 2 caracteres</small>
+        </div>
+      </div> 
     </div>
 
     <!-- dni -->

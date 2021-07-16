@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class BaseService<T> {
 
-  protected itemsCollection: AngularFirestoreCollection<T>;
+    protected itemsCollection: AngularFirestoreCollection<T>;
     items: Observable<T[]>;    
 
     constructor(private afs: AngularFirestore) {
@@ -18,7 +18,12 @@ export class BaseService<T> {
       this.itemsCollection = this.afs.collection<T>(collName);
       this.items = this.itemsCollection.valueChanges();
     }
-  
+    
+    protected setCollectionOrderBy(collName:string, field:string){
+      this.itemsCollection = this.afs.collection<T>(collName, ref => ref.orderBy(field, "asc"));
+      this.items = this.itemsCollection.valueChanges();
+    }
+    
     getItemByFilter(campo:string, value:any){
       return this.itemsCollection.ref.where(campo,'==',value).get();
     }
