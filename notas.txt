@@ -13,6 +13,10 @@ para plugins de cordova se necesita instlalar el core
 	npm install @ionic-native/core
 
 --------------
+para el splash
+	npm install @capacitor/splash-screen
+	npx cap sync
+--------------
 splash icon
  
  crear carpeta resources en la raiz del proyecto

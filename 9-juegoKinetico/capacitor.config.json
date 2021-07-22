@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.kinetico",
+	"appName": "Juego Kinético",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

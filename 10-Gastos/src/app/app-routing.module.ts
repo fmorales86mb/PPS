@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SplashComponent } from './pages/splash/splash.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  {path:"login", component:LoginComponent},
+  // {path:"register", component:RegisterComponent, canActivate:[AuthGuard]},
+  {path:"home", component:HomeComponent, canActivate:[AuthGuard]},  
+  {path:"splash", component:SplashComponent},
+  {path:"", redirectTo:"splash", pathMatch:"full"}
 ];
 
 @NgModule({

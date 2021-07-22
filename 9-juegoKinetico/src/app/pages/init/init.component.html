@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Personajes</ion-title>
+    <ion-button class="btn-exit" (click)="logout()">Salir</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <ion-avatar class="logo-avatar" *ngFor="let logo of logos; let i = index">
+    <img [src]="logo" (click)="seleccionarPersonaje(i)">
+  </ion-avatar>
+  
+</ion-content>
