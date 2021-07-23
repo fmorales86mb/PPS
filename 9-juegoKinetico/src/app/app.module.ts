@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { InitComponent } from './pages/init/init.component';
+import { Top3Component } from './pages/top3/top3.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InitComponent } from './pages/init/init.component';
     SplashComponent,
     HomeComponent,
     TimerComponent,
-    InitComponent
+    InitComponent,
+    Top3Component
   ],
   entryComponents: [],
   imports: [

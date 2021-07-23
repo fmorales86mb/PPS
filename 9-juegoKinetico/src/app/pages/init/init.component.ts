@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-init',
@@ -11,8 +12,7 @@ export class InitComponent implements OnInit {
 
   logos:string[];
 
-  constructor(private router:Router,
-    private authService:AuthService) { 
+  constructor(private router:Router) { 
     this.logos = [
       "assets/batman.png",
       "assets/capitanamerica.png",
@@ -26,9 +26,4 @@ export class InitComponent implements OnInit {
   seleccionarPersonaje(index:number):void {
     this.router.navigate(['game', {logo: this.logos[index]}])
   }
-
-  logout(){
-    this.authService.Desloguearse();
-  }
-
 }

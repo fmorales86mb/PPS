@@ -20,7 +20,7 @@ export class BaseService<T> {
     }
     
     protected setCollectionOrderBy(collName:string, field:string){
-      this.itemsCollection = this.afs.collection<T>(collName, ref => ref.orderBy(field, "asc"));
+      this.itemsCollection = this.afs.collection<T>(collName, ref => ref.orderBy(field, "desc"));
       this.items = this.itemsCollection.valueChanges();
     }
     

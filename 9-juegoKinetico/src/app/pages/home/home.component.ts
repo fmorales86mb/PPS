@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     private router:Router,
     private authService:AuthService,
     private gameService: GameService) {
-      this.acel = 4;
+      this.acel = 3;
       this.srcImg = "assets/icon.png";
       this.gameOver = false;
       this.sleep = false;
