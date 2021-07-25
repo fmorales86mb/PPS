@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Registro de Gastos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <!-- Mes seleccionado  -->
+    <ion-list-header>
+      <h1>Mes seleccionado</h1>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="calendar-outline" slot="end"></ion-icon>  
+      <ion-label>{{mes}}</ion-label>
+    </ion-item>
+
+    <!-- Ingreso Mensual  -->
+    <ion-list-header>
+      <h1>Gasto</h1>
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="fixed"><h1>$</h1></ion-label>
+      <ion-icon name="receipt-outline" slot="end"></ion-icon> 
+      <ion-input></ion-input>
+    </ion-item>
+
+    <!-- Ingreso Mensual  -->
+    <ion-list-header>
+      <h1>Categoría</h1>
+    </ion-list-header>    
+    <ion-chip outline color="primary">
+      <ion-icon name="documents-outline"></ion-icon>
+      <ion-label>Impuestos</ion-label>          
+    </ion-chip>
+    <ion-chip outline color="secondary">
+      <ion-icon name="shirt-outline"></ion-icon>
+      <ion-label>Ropa</ion-label>          
+    </ion-chip>
+    <ion-chip outline color="tertiary">
+      <ion-icon name="restaurant"></ion-icon>
+      <ion-label>Restaurantes</ion-label>          
+    </ion-chip>
+    <ion-chip outline color="dark">
+      <ion-icon name="videocam"></ion-icon>
+      <ion-label>Entretenimiento</ion-label>          
+    </ion-chip>      
+  </ion-list>
+</ion-content>

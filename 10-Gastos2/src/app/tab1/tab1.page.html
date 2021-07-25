@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>      
+        Configuración del Mes       
+    </ion-title>    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <!-- Mes actual  -->
+    <ion-list-header>
+      <h1>Mes actual</h1>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="calendar-outline" slot="end"></ion-icon>      
+      <ion-datetime 
+        displayFormat="MMMM YYYY" 
+        [monthNames]="meses" 
+        min="2021-01-01" 
+        max="2031-12-30"         
+        [(ngModel)]="registroMes.fechaCompleta"                
+        [pickerOptions]="customPickerOptions"
+        [disabled]="noEditar"
+        ></ion-datetime>
+    </ion-item>
+
+    <!-- Ingreso Mensual  -->
+    <ion-list-header>
+      <h1>Ingreso mensual</h1>
+    </ion-list-header>
+    <form [formGroup]="Form">
+      <ion-item>
+        <ion-label position="fixed"><h1>$</h1></ion-label>
+        <ion-icon name="cash-outline" slot="end"></ion-icon>      
+        <ion-input 
+          [(ngModel)]="registroMes.ingreso" 
+          formControlName="ingresoCtrl"
+          [disabled]="noEditar">
+        </ion-input>
+      </ion-item>
+    </form>
+    
+
+    <!-- Umbral de gastos  -->
+    <ion-list-header>
+      <h2>Umbral de gastos <span>{{registroMes.umbral}}</span></h2>
+    </ion-list-header>
+    <ion-item>            
+      <ion-range 
+        min="1" 
+        max="100" 
+        step="5" 
+        [disabled]="noEditar"
+        [(ngModel)]="registroMes.umbral">
+        <ion-icon size="small" slot="start" name="cart-outline"></ion-icon>
+        <ion-icon size="large" slot="end" name="cart-outline"></ion-icon>
+      </ion-range>
+    </ion-item>
+  </ion-list>  
+
+  <ion-button expand="full" [disabled]="!noEditar" (click)="editar()">Editar</ion-button>
+  <ion-button expand="full" (click)="save()" [disabled]="noEditar || Form.invalid || !registroMes.fechaCompleta">Guardar</ion-button>
+
+</ion-content>

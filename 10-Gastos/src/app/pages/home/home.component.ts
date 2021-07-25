@@ -12,17 +12,28 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  // users:User[];
-  // currentUser:User;
+  meses:string[];  
+  customPickerOptions: any;  
 
-  constructor(
-    // private router:Router,
-    // private spinner:SpinnerService,
-    // private userService:UserService,
-    // private authService:AuthService
-    ) { 
-      // this.users = [];
+  constructor(    
+    ) 
+  { 
+    this.setMeses();
+    this.customPickerOptions = {
+      buttons: [{
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {
+          return false;
+        }
+      },{
+        text: 'Aceptar',
+        handler: () => {
+          return true;
+        }
+      }]
     }
+  }    
 
   ngOnInit() {
     // this.spinner.show();
@@ -37,5 +48,22 @@ export class HomeComponent implements OnInit {
 
   logout(){
    // this.authService.Desloguearse();
+  }
+
+  private setMeses(){
+    this.meses = [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ]; 
   }
 }

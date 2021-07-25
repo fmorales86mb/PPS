@@ -1,0 +1,7 @@
+{
+  "name": "10-Gastos2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

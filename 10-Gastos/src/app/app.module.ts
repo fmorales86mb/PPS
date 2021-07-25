@@ -14,13 +14,15 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomeComponent } from './pages/home/home.component';
 import { SplashComponent } from './pages/splash/splash.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SplashComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   entryComponents: [],
   imports: [
