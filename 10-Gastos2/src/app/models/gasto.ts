@@ -1,5 +1,11 @@
+import { Categoria } from "./enums/categorias";
+
 export class Gasto{
     idMes:string;
-    categoría:number;
+    categoria:Categoria;
     gasto:number;
+
+    // constructor(){
+    //     this.gasto = 0;
+    // }
 }
