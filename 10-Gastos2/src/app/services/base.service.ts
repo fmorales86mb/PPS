@@ -33,6 +33,10 @@ export class BaseService<T> {
       return this.itemsCollection.ref.where(campo,'==',value).get();
     }
 
+    protected getObservableItemByFilter(collName:string, campo:string, value:any){
+      return this.afs.collection<T>(collName, ref => ref.where(campo, '==', value)).valueChanges({idField: "docId"});
+    }
+
     addItem(item: T) {
       return this.itemsCollection.add(Object.assign({}, item));    
     }

@@ -5,4 +5,5 @@ export class RegistroMensual{
     ingreso:number;
     umbral:number;
     uid:string;
+    docId:string;
 }

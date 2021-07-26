@@ -1,8 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Registro de Gastos
-    </ion-title>
+    <ion-item>
+      <ion-label><h2>Registro de Gastos</h2></ion-label>
+      <ion-button (click)="logout()" color="secondary">
+        Salir
+        <ion-icon name="exit-outline" slot="end" color="danger"></ion-icon>
+      </ion-button>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -11,11 +15,20 @@
   <ion-list>
     <!-- Mes seleccionado  -->
     <ion-list-header>
-      <h1>Mes seleccionado</h1>
+      <h1>Mes</h1>
     </ion-list-header>
-    <ion-item>
-      <ion-icon name="calendar-outline" slot="end"></ion-icon>  
-      <ion-label *ngIf="registroMes">{{registroMes.fechaCompleta.month.text}} {{registroMes.fechaCompleta.year.text}}</ion-label>
+    <ion-item class="item">
+      <ion-icon name="calendar-outline" slot="end"></ion-icon>      
+      <ion-datetime 
+        *ngIf="showMeses"
+        displayFormat="MMMM YYYY" 
+        [monthNames]="meses" 
+        min="2021-01-01" 
+        max="2021-12-30"         
+        [(ngModel)]="registroMes.fechaCompleta"                
+        [pickerOptions]="customPickerOptions"
+        [disabled]="noEditar"
+        ></ion-datetime>
     </ion-item>
 
     <!-- Ingreso Mensual  -->
@@ -23,10 +36,11 @@
       <h1>Gasto</h1>
     </ion-list-header>
     <form [formGroup]="Form">
-      <ion-item>
+      <ion-item class="item">
         <ion-label position="fixed"><h1>$</h1></ion-label>
         <ion-icon name="cash-outline" slot="end"></ion-icon>      
         <ion-input 
+          type="number"
           [(ngModel)]="gasto.gasto" 
           formControlName="gastoCtrl">
         </ion-input>

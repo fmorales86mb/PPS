@@ -12,4 +12,12 @@ export class GastoService extends BaseService<Gasto> {
     super(fire);
     this.setCollection("gastos");
   }  
+
+  getGastosByUid(uid:string){
+    return this.getItemByFilter("uid", uid);
+  }
+
+  getObservableByUser(uid:string){
+    return super.getObservableItemByFilter("gastos", "uid", uid);
+  }
 }

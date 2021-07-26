@@ -1,17 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-item>
+      <ion-label><h2>Estadísticas</h2></ion-label>
+      <ion-button (click)="logout()" color="secondary">
+        Salir
+        <ion-icon name="exit-outline" slot="end" color="danger"></ion-icon>
+      </ion-button>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+    <!-- Gastos vs Ingresos Anualizados  -->
+    <ion-list-header>
+      <h1>Gastos vs Ingresos Anualizados</h1>
+    </ion-list-header>
+    <ion-item>
+      <chart [type]="typeAnual" [data]="dataAnual" [options]="optionsAnual"></chart>
+    </ion-item>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    <!-- Gastos por Categoría  -->
+    <ion-list-header>
+      <h1>Gastos por Categoría</h1>
+    </ion-list-header>  
+    <ion-item class="item">
+      <chart [type]="typeGastos" [data]="dataGastos" [options]="optionsGastos"></chart>
+    </ion-item>  
+
+
 </ion-content>

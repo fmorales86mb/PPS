@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categoria } from '../models/enums/categorias';
 import { ToastType } from '../models/enums/toastType-enum';
 import { Gasto } from '../models/gasto';
+import { RegistroMensual } from '../models/resgistro-mensual';
 import { AuthService } from '../services/auth.service';
 import { GastoService } from '../services/gasto.service';
 import { MensualService } from '../services/mensual.service';
@@ -16,13 +17,17 @@ import { ToastService } from '../services/toast.service';
 })
 export class Tab2Page implements OnInit {
 
+  meses:string[];
+  customPickerOptions: any;
   uid:string;  
-  registroMes:any;
+  registroMes:RegistroMensual;
   resto:number;
   Form:FormGroup;  
   gasto:Gasto;
   chipsDisabled:boolean[];
   selectedChip:number;
+  showMeses:boolean;
+  registroMeses:RegistroMensual[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,19 +38,53 @@ export class Tab2Page implements OnInit {
     private gastoService:GastoService
   ) {    
     this.gasto = new Gasto();
+    this.registroMes = new RegistroMensual();
     this.initChip();
+    this.showMeses = true;
+    this.setMeses();
+    this.customPickerOptions = {
+      buttons: [{
+        text: 'Aceptar',
+        handler: (value) => {
+          console.log(value);
+          let registroAux = this.registroMeses.find((i)=>{
+            return i.anio == value.year.value && i.mes == value.month.value;
+          });
+
+          if(registroAux){
+            this.registroMes = registroAux;
+            return true;
+          }
+          else{
+            this.toast.present("El mes seleccionado no se encuentra configurado", ToastType.Warning);
+            return false;
+          }
+          
+        }
+      }]
+    }
   }
 
   ngOnInit(): void {
     this.spinner.show();    
     this.uid = this.authService.GetCurrentUid();  
-    
-    this.mensualService.items.subscribe((items) => {      
-      const myItems = items.filter(i => i.uid == this.uid);
-      console.log(myItems);
-      if(myItems && myItems.length > 0){        
-        this.registroMes = myItems[0];
+    let now = new Date();
+
+    this.mensualService.getObservableByUser(this.uid).subscribe((items) => {
+      this.registroMeses = items;
+      this.registroMes = items.find((i) => {
+        return i.anio == now.getFullYear() && i.mes == now.getMonth();
+      });
+
+      if(!this.registroMes){
+        if(items.length > 0){        
+          this.registroMes = items[0];
+        }else{
+          this.showMeses = false;
+          this.toast.present("No hay meses configurados", ToastType.Warning);
+        }
       }
+    
       this.spinner.hide();
     })
 
@@ -60,7 +99,7 @@ export class Tab2Page implements OnInit {
 
   save(){    
     this.gasto.idMes = this.registroMes.docId;
-    //console.log(this.gasto);
+    this.gasto.uid = this.uid;
     this.spinner.show();   
     
     this.gastoService.addItem(this.gasto)
@@ -127,5 +166,26 @@ export class Tab2Page implements OnInit {
       false,
       false
     ]
+  }
+
+  private setMeses(){
+    this.meses = [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ]; 
+  }
+
+  logout(){
+    this.authService.Desloguearse();
   }
 }

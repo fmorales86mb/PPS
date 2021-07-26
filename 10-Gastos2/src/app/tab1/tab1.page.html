@@ -1,8 +1,12 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>      
-        Configuración del Mes       
-    </ion-title>    
+    <ion-item>
+      <ion-label><h2>Configuración del Mes</h2></ion-label>
+      <ion-button (click)="logout()" color="secondary">
+        Salir
+        <ion-icon name="exit-outline" slot="end" color="danger"></ion-icon>
+      </ion-button>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -11,15 +15,15 @@
   <ion-list>
     <!-- Mes actual  -->
     <ion-list-header>
-      <h1>Mes actual</h1>
+      <h1>Mes a configurar</h1>
     </ion-list-header>
-    <ion-item>
+    <ion-item class="item">
       <ion-icon name="calendar-outline" slot="end"></ion-icon>      
       <ion-datetime 
         displayFormat="MMMM YYYY" 
         [monthNames]="meses" 
         min="2021-01-01" 
-        max="2031-12-30"         
+        max="2021-12-30"         
         [(ngModel)]="registroMes.fechaCompleta"                
         [pickerOptions]="customPickerOptions"
         [disabled]="noEditar"
@@ -31,10 +35,11 @@
       <h1>Ingreso mensual</h1>
     </ion-list-header>
     <form [formGroup]="Form">
-      <ion-item>
+      <ion-item class="item">
         <ion-label position="fixed"><h1>$</h1></ion-label>
         <ion-icon name="cash-outline" slot="end"></ion-icon>      
         <ion-input 
+          type="number"
           [(ngModel)]="registroMes.ingreso" 
           formControlName="ingresoCtrl"
           [disabled]="noEditar">
@@ -47,7 +52,7 @@
     <ion-list-header>
       <h2>Umbral de gastos <span>{{registroMes.umbral}}</span></h2>
     </ion-list-header>
-    <ion-item>            
+    <ion-item class="item">            
       <ion-range 
         min="1" 
         max="100" 
@@ -61,6 +66,7 @@
   </ion-list>  
 
   <ion-button expand="full" [disabled]="!noEditar" (click)="editar()">Editar</ion-button>
+  <ion-button expand="full" (click)="nuevo()">Nuevo</ion-button>
   <ion-button expand="full" (click)="save()" [disabled]="noEditar || Form.invalid || !registroMes.fechaCompleta">Guardar</ion-button>
 
 </ion-content>

@@ -21,7 +21,8 @@ export class Tab1Page implements OnInit {
   uid:string;  
   noEditar:boolean;
   isUpdate:boolean;
-  registroMes:any;
+  registroMes:RegistroMensual;
+  registroMeses:RegistroMensual[];
   private Form:FormGroup;  
 
   constructor(
@@ -35,14 +36,26 @@ export class Tab1Page implements OnInit {
     this.registroMes.umbral = 50;
     this.noEditar = false;
     this.isUpdate = false;
+    this.registroMeses = [];
 
     this.setMeses();
     this.customPickerOptions = {
       buttons: [{
         text: 'Aceptar',
         handler: (value) => {
-          this.registroMes.fechaCompleta = value;
           console.log(value);
+          let registroAux = this.registroMeses.find((i)=>{
+            return i.anio == value.year.value && i.mes == value.month.value;
+          });
+
+          if(registroAux){
+            this.registroMes = registroAux;
+            this.noEditar = true;
+            this.isUpdate = true;
+          }
+          else{
+            this.nuevo();
+          }
           return true;
         }
       }]
@@ -51,19 +64,39 @@ export class Tab1Page implements OnInit {
 
   ngOnInit(): void {
     this.spinner.show();    
-    this.uid = this.authService.GetCurrentUid();  
+    this.uid = this.authService.GetCurrentUid(); 
+    let now = new Date(); 
     
-    this.mensualService.items.subscribe((items) => {      
-      const myItems = items.filter(i => i.uid == this.uid);
-      console.log(myItems);
-      if(myItems && myItems.length > 0){        
-        this.registroMes = myItems[0];
-        this.noEditar = true;
-        this.isUpdate = true;
+    // this.mensualService.items.subscribe((items) => {      
+    //   const myItems = items.filter(i => i.uid == this.uid);
+    //   console.log(myItems);
+    //   if(myItems && myItems.length > 0){        
+    //     this.registroMes = myItems[0];
+    //     this.noEditar = true;
+    //     this.isUpdate = true;
+    //   }
+    //   this.spinner.hide();
+    // })
+
+    this.mensualService.getObservableByUser(this.uid).subscribe((items) => {
+      this.registroMeses = items;
+      this.noEditar = true;
+      this.isUpdate = true;
+
+      this.registroMes = items.find((i) => {
+        return i.anio == now.getFullYear() && i.mes == now.getMonth();
+      });
+
+      if(!this.registroMes){
+        if(items.length > 0){        
+          this.registroMes = items[0];
+        }else{
+          this.nuevo();
+        }
       }
+    
       this.spinner.hide();
     })
-    //this.registroMes.f = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
 
     this.createForm();
   }
@@ -75,8 +108,7 @@ export class Tab1Page implements OnInit {
     });
   }
 
-  save(){
-    //console.log(this.fecha);    
+  save(){   
     this.registroMes.anio = this.registroMes.fechaCompleta.year.value;
     this.registroMes.mes = this.registroMes.fechaCompleta.month.value;
     this.registroMes.uid = this.uid;
@@ -130,5 +162,17 @@ export class Tab1Page implements OnInit {
 
   editar(){
     this.noEditar = !this.noEditar;
+  }
+
+  nuevo(){
+    this.isUpdate = false;
+    this.noEditar = false;
+
+    this.createForm();
+    this.registroMes.umbral = 50;
+  }
+
+  logout(){
+    this.authService.Desloguearse();
   }
 }
