@@ -1,3 +1,5 @@
+import { Gasto } from "./gasto";
+
 export class RegistroMensual{
     anio:number;
     mes:number;
@@ -6,4 +8,10 @@ export class RegistroMensual{
     umbral:number;
     uid:string;
     docId:string;
+    gastos:Gasto[];
+
+    constructor(){
+        this.gastos = [];
+        this.umbral = 50;
+    }
 }

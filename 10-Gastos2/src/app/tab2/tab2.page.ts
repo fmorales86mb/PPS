@@ -98,8 +98,8 @@ export class Tab2Page implements OnInit {
   }
 
   save(){    
-    this.gasto.idMes = this.registroMes.docId;
-    this.gasto.uid = this.uid;
+    // this.gasto.idMes = this.registroMes.docId;
+    // this.gasto.uid = this.uid;
     this.spinner.show();   
     
     this.gastoService.addItem(this.gasto)

@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-item>
+    <ion-item color="dark">
       <ion-label><h2>Estadísticas</h2></ion-label>
       <ion-button (click)="logout()" color="secondary">
         Salir
@@ -10,21 +10,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" color="dark">
   
     <!-- Gastos vs Ingresos Anualizados  -->
-    <ion-list-header>
+    <ion-list-header color="dark">
       <h1>Gastos vs Ingresos Anualizados</h1>
     </ion-list-header>
-    <ion-item>
+    <ion-item color="dark">
       <chart [type]="typeAnual" [data]="dataAnual" [options]="optionsAnual"></chart>
     </ion-item>
 
     <!-- Gastos por Categoría  -->
-    <ion-list-header>
+    <ion-list-header color="dark">
       <h1>Gastos por Categoría</h1>
     </ion-list-header>  
-    <ion-item class="item">
+    <ion-item class="item" color="dark">
       <chart [type]="typeGastos" [data]="dataGastos" [options]="optionsGastos"></chart>
     </ion-item>  
 

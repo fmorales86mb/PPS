@@ -7,6 +7,7 @@ import { LoginData } from 'src/app/models/loginData';
 import { AuthService } from 'src/app/services/auth.service';
 import { SpinnerService } from 'src/app/services/spinner.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { MensualService } from '../services/mensual.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,17 @@ export class LoginComponent implements OnInit {
   private loginData:LoginData;
   private loginForm:FormGroup;
   private loginsMock:LoginData[];  
+  chipsDisabled:boolean[];
+  selectedChip:number;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,    
     private spinner:SpinnerService, 
-    private toast:ToastService) { 
+    private toast:ToastService
+    ) { 
+      this.initChip();
   }
 
   ngOnInit() {
@@ -76,6 +81,36 @@ export class LoginComponent implements OnInit {
 
   fillLogin(index:number){
     this.loginData = this.loginsMock[index];
+  }
+
+  selectChip(i:number){   
+    if(this.selectedChip && this.selectedChip == i){      
+      this.selectedChip = null;
+    }
+    else{
+      this.selectedChip = i;
+      this.loginData = this.loginsMock[i];
+    }
+
+    this.chipsDisabled.forEach((value, index)=>{      
+      if(index != i){
+        this.chipsDisabled[index] = !value;
+      }      
+    })
+
+   
+  }
+
+  initChip(){
+    this.selectedChip = null;
+    this.chipsDisabled = [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
   }
 
 }

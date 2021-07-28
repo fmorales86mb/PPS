@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartComponent } from 'angular2-chartjs';
 import { Gasto } from '../models/gasto';
 import { RegistroMensual } from '../models/resgistro-mensual';
 import { AuthService } from '../services/auth.service';
@@ -32,8 +33,6 @@ export default class Tab3Page implements OnInit{
   optionsAnual:any;
 
   constructor(
-    private gastoService:GastoService,
-    private toast:ToastService,
     private spinner:SpinnerService,
     private authService:AuthService,
     private mensualService:MensualService,
@@ -49,28 +48,22 @@ export default class Tab3Page implements OnInit{
 
     this.uid = this.authService.GetCurrentUid();
 
-    this.gastoService.getObservableByUser(this.uid).subscribe((items)=>{
-      this.initCount();
-      this.gastos = items;
-
-      items.forEach((doc) => {                               
-        this.gastoAnual += doc.gasto;
-        this.contadorCategorias[doc.categoria] += doc.gasto;          
-      });    
-
-      this.initAnual();
-      this.initGastos();
-      this.spinner.hide();
-    });
-
     this.mensualService.getObservableByUser(this.uid).subscribe((items)=>{
+      console.log(items);
       this.initIngreso();
+      this.initCount();
       this.meses = items;
 
       items.forEach((doc) => {                               
-        this.ingresoAnual += doc.ingreso;          
+        this.ingresoAnual += doc.ingreso;  
+        doc.gastos.forEach((gas) => {                               
+          this.gastoAnual += gas.gasto;
+          this.contadorCategorias[gas.categoria - 1] += gas.gasto;          
+        });     
       });    
-            
+         
+      this.initAnual();
+      this.initGastos();
       this.spinner.hide();
     });
   }
@@ -123,12 +116,12 @@ export default class Tab3Page implements OnInit{
     };    
     this.dataGastos = {
       labels: [
-        'Impuestos',
         'Ropa',
         'Restaurantes',
         'Entretenimiento',
         'Alimento',
-        'Medicina'
+        'Medicina',
+        'Impuestos'
       ],
       datasets: [{
         label: 'Gastos por Categoría',

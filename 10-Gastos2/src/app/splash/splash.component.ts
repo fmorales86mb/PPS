@@ -19,7 +19,8 @@ export class SplashComponent implements OnInit {
       .create()
       .addElement(document.querySelector('.name'))
       .duration(2000)
-      .fromTo('opacity', '0', '1'); 
+      .fromTo('transform', 'translateX(400px)', 'translateX(0px)')
+
     const name1: Animation = this.animationController
       .create()
       .addElement(document.querySelector('.name'))
@@ -30,7 +31,7 @@ export class SplashComponent implements OnInit {
       .create()
       .addElement(document.querySelector('.curso'))
       .duration(2000)
-      .fromTo('opacity', '0', '1'); 
+      .fromTo('transform', 'translateX(-400px)', 'translateX(0px)')
 
     const curso1: Animation = this.animationController
       .create()
